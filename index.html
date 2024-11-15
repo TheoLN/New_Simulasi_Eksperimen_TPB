@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Lab Eksperimen Kimia TPB</title>
+    <style>
+        h1{
+            color :blueviolet;
+            font-size: 50px;
+            
+        }
+        header{
+            background-color: rgb(217, 193, 240);
+            margin: 0;
+            padding : 0;
+            display:flex;
+
+        }
+        Section {
+            
+            display:flex;
+        }
+        div {
+            background-color: blueviolet;
+            margin: auto;
+        }
+        figcaption{
+            text-align: center;
+            color:rgb(253, 243, 247)
+        }
+        button{
+            text-align: right;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <img  src="11318306.png" width = 20% max-width =150px max-height="150px">
+        <h1>Eksperimen Virtual Kimia TPB</h1>
+        <a href="login.html">
+            <button  type ="button" value="go to login" id="login" name="login">Login</button>
+        </a>
+    </header>
+    <h3>Selamat datang, web kami menyediakan simulasi eksperimen kimia berikut :</h2>
+    <section>
+            <div>
+                <a href="redoks_teori.html">
+                    <img src="Reaksi Redoks.jpg" width="200" height="150" alt = "Reaksi Redoks"><figcaption>Reaksi Redoks</figcaption>
+                </a>
+            </div>
+            <div>
+                <a href="hess_teori.html">
+                <img src="Hess.png" alt="Hukum Hess" width="200" height="150"><figcaption>Hukum Hess</figcaption>
+                </a>
+            </div>
+            
+    </section>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){ var loggedInUser = localStorage.getItem("loggedInUser"); if(loggedInUser){ document.getElementById("login").textContent = loggedInUser; } });
+    </script>
+
+</body>
+</html>

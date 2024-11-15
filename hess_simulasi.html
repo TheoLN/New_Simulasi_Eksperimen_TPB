@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Hess</title>
+    <link rel="stylesheet" href="page.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul >
+                <li><a class="navigasi" href="index.html">Home</a></li>
+                <li><a class="navigasi" href="hess_teori.html">Teori</a></li>
+                <li><a class="navigasi" href="hess_step.html">Langkah - langkah</a></li>
+            </ul>
+        </nav>
+        <div class="flex">
+            <img src="Hess.png" width = 20% max-width =150px max-height="150px" >
+            <h1>Simulasi Eksperimen Hukum Hess</h1>
+        </div>
+    </header>
+
+    <section class="simulasi">
+        <div id="labHess">
+            <h1>Simulasi Hukum Hess (Input Pengguna)</h1>
+        
+            <div class="reaction-box">
+              <p>Reaksi 1: <span>Zn(s) + CuSO₄(aq) → ZnSO₄(aq) + Cu(s)</span></p>
+              <p>ΔH₁ = <input type="number" id="deltaH1" placeholder="kJ/mol"> kJ/mol</p>
+            </div>
+        
+            <div class="reaction-box">
+              <p>Reaksi 2: <span>ZnO(s) + SO₃(g) → ZnSO₄(aq)</span></p>
+              <p>ΔH₂ = <input type="number" id="deltaH2" placeholder="kJ/mol"> kJ/mol</p>
+            </div>
+        
+            <div class="reaction-box">
+              <p>Reaksi Total: <span>Zn(s) + SO₃(g) → ZnO(s) + Cu(s)</span></p>
+              <p>ΔH Total = ? kJ/mol</p>
+            </div>
+        
+            <button onclick="calculateHessLaw()">Hitung Hukum Hess</button>
+        
+            <div class="resultHess" id="resultH"></div>
+          </div>
+    </section>
+    
+    <script>
+        function calculateHessLaw() {
+            try {
+              // Ambil nilai input dari pengguna
+              const deltaH1 = parseFloat(document.getElementById('deltaH1').value);
+              const deltaH2 = parseFloat(document.getElementById('deltaH2').value);
+      
+              // Cek apakah input valid (pastikan pengguna memasukkan angka)
+              if (isNaN(deltaH1) || isNaN(deltaH2)) {
+                document.getElementById('resultH').textContent = "Harap masukkan nilai ΔH yang valid!";
+                return;
+              }
+      
+              // Menghitung total perubahan entalpi berdasarkan hukum Hess
+              const deltaHTotal = deltaH1 + deltaH2;
+      
+              // Menampilkan hasil perhitungan di elemen dengan id "result"
+              document.getElementById('resultH').textContent = `ΔH Total = ${deltaHTotal} kJ/mol`;
+            } catch (error) {
+              console.error("Terjadi kesalahan saat menghitung Hukum Hess: ", error);
+              document.getElementById('resultH').textContent = "Terjadi kesalahan. Coba lagi!";
+            }
+          }
+      </script>
+</body>
+</html>

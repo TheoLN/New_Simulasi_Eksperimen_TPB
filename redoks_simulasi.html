@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="page.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul >
+                <li><a class="navigasi" href="index.html">Home</a></li>
+                <li><a class="navigasi" href="redoks_teori.html">Teori</a></li>
+                <li><a class="navigasi" href="redoks_step.html">Langkah - langkah</a></li>
+                
+            </ul>
+        </nav>
+        <div class="flex">
+            <img src="Reaksi Redoks.jpg" width = 20% max-width =150px max-height="150px" >
+            <h1>Simulasi Eksperimen Redoks</h1>
+        </div>
+    </header>
+    <section class="simulasi">
+        <div id="lab">
+        
+            <div id="zinc" class="drag-item" draggable="true">Zinc (Zn)</div>
+            <div id="cuso4" class="drag-item" draggable="true">CuSO₄</div>
+        
+
+            <div id="reaction-zone">Drag Here</div>
+        
+        
+            <div class="beaker">
+            <span>Beaker</span>
+            </div>
+        
+            
+            <div id="result"></div>
+        </div>
+      </section>
+      <script>
+        const dragItems = document.querySelectorAll('.drag-item');
+        const reactionZone = document.getElementById('reaction-zone');
+        const result = document.getElementById('result');
+    
+        let zincDropped = false;
+        let cuso4Dropped = false;
+    
+        // Add dragstart event to items
+        dragItems.forEach(item => {
+          item.addEventListener('dragstart', dragStart);
+        });
+    
+        // Reaction zone events
+        reactionZone.addEventListener('dragover', dragOver);
+        reactionZone.addEventListener('drop', dragDrop);
+    
+        // Function to handle drag start
+        function dragStart(e) {
+          e.dataTransfer.setData('text/plain', e.target.id);
+        }
+    
+        // Function to allow drop (dragover event)
+        function dragOver(e) {
+          e.preventDefault();
+        }
+    
+        // Function to handle drop
+        function dragDrop(e) {
+          e.preventDefault();
+          const id = e.dataTransfer.getData('text');
+          const draggedElement = document.getElementById(id);
+          
+          // Place the item in the reaction zone
+          reactionZone.appendChild(draggedElement);
+          reactionZone.classList.add('dropped');
+    
+          // Check what was dropped
+          if (id === 'zinc') {
+            zincDropped = true;
+          } else if (id === 'cuso4') {
+            cuso4Dropped = true;
+          }
+    
+          // Check if both items are in the reaction zone
+          if (zincDropped && cuso4Dropped) {
+            triggerReaction();
+          }
+        }
+    
+        // Simulate the reaction
+        function triggerReaction() {
+          result.style.display = 'block';
+          result.textContent = "Zn + CuSO₄ → ZnSO₄ + Cu";
+          reactionZone.style.backgroundColor = '#ffd700'; // Change color to indicate reaction
+    
+          setTimeout(() => {
+            result.textContent = "Zinc replaces copper in the solution.";
+          }, 3000); // After 3 seconds, update the reaction result
+        }
+      </script>
+</body>
+</html>
