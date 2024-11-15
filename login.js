@@ -1,11 +1,13 @@
-var firebaseConfig = {
-    apiKey: "",
-    authDomain: "",
-    projectId: "",
-    storageBucket: "",
-    messagingSenderId: "",
-    appId: ""
-  };
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBtCEb7H01amJ6NM0EMqTQM6wLAWL7sZUE",
+  authDomain: "login-praktikum-tpb.firebaseapp.com",
+  databaseURL: "https://login-praktikum-tpb-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "login-praktikum-tpb",
+  storageBucket: "login-praktikum-tpb.firebasestorage.app",
+  messagingSenderId: "142865773881",
+  appId: "1:142865773881:web:0290faf49a0416dfdca4e8"
+};
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   // Initialize variables
@@ -30,6 +32,7 @@ var firebaseConfig = {
         alert('Your password is incorrect')
         return
     }
+    
     
    
     // Move on with Auth
@@ -104,7 +107,7 @@ var firebaseConfig = {
   
       // DOne
       alert('User Logged In!!')
-      localStorage.setItem("loggedInUser", username);
+      localStorage.setItem("loggedInUser", full_name);
       window.location.href = "index.html";
   
     })
@@ -134,11 +137,8 @@ var firebaseConfig = {
   
   function validate_password(password) {
     // Firebase only accepts lengths greater than 6
-    if (password < 6) {
-      return false
-    } else {
-      return true
-    }
+    return password.length >= 6;
+    
   }
   
   function validate_field(field) {
