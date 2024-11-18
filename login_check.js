@@ -5,5 +5,4 @@ if (loggedInUser) {
 } else {
   alert("No user is logged in.");
   // Redirect to login page if necessary
-  window.location.href = "login.html";
 }
