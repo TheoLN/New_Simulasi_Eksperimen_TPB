@@ -48,20 +48,37 @@
     <h3>Selamat datang, web kami menyediakan simulasi eksperimen kimia berikut :</h2>
     <section>
             <div>
-                <a href="redoks_teori.html">
-                    <img src="Reaksi Redoks.jpg" width="200" height="150" alt = "Reaksi Redoks"><figcaption>Reaksi Redoks</figcaption>
+                <a href="redoks/redoks_teori.html">
+                    <img src="redoks/Reaksi Redoks.jpg" width="200" height="150" alt = "Reaksi Redoks"><figcaption>Reaksi Redoks</figcaption>
                 </a>
             </div>
             <div>
-                <a href="hess_teori.html">
-                <img src="Hess.png" alt="Hukum Hess" width="200" height="150"><figcaption>Hukum Hess</figcaption>
+                <a href="hess/hess_teori.html">
+                <img src="hess/Hess.png" alt="Hukum Hess" width="200" height="150"><figcaption>Hukum Hess</figcaption>
                 </a>
             </div>
             
     </section>
     
     <script>
-        document.addEventListener("DOMContentLoaded", function(){ var loggedInUser = localStorage.getItem("loggedInUser"); if(loggedInUser){ document.getElementById("login").textContent = loggedInUser; } });
+        document.addEventListener("DOMContentLoaded", function() { 
+            // Retrieve the user data from localStorage 
+            var loggedInUser = localStorage.getItem("loggedInUser"); 
+            if (loggedInUser) { 
+                try { 
+                    var User = JSON.parse(loggedInUser); 
+                    // Check if loggedInUser is not null and has a name property 
+                    if (User.name) { document.getElementById("login").textContent = User.name; 
+                } else {
+                     document.getElementById("login").textContent = "Login"; 
+                    } 
+                } catch (e) { 
+                    console.error("Error parsing loggedInUser: ", e); 
+                    document.getElementById("login").textContent = "Login"; } 
+                } else { 
+                    document.getElementById("login").textContent = "Login"; 
+                } 
+            });
     </script>
 
 </body>

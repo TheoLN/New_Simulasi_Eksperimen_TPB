@@ -72,6 +72,7 @@ const firebaseConfig = {
     // Get all our input fields
     email = document.getElementById('email').value
     password = document.getElementById('password').value
+    full_name = document.getElementById('full_name').value
   
     // Validate input fields
     if (validate_email(email) == false ) {
@@ -107,7 +108,9 @@ const firebaseConfig = {
   
       // DOne
       alert('User Logged In!!')
-      localStorage.setItem("loggedInUser", full_name);
+      var username ={name: full_name};
+      localStorage.setItem("loggedInUser", JSON.stringify({ uid: user.uid, name : full_name, email: email, password:password}));
+
       window.location.href = "index.html";
   
     })

@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulasi Hess</title>
-    <link rel="stylesheet" href="page.css">
+    <link rel="stylesheet" href="../page.css">
 </head>
 <body>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+  <script src="login_check.js"></script>
     <header>
         <nav>
             <ul >
-                <li><a class="navigasi" href="index.html">Home</a></li>
+                <li><a class="navigasi" href="../index.html">Home</a></li>
                 <li><a class="navigasi" href="hess_teori.html">Teori</a></li>
                 <li><a class="navigasi" href="hess_step.html">Langkah - langkah</a></li>
             </ul>
@@ -18,6 +22,10 @@
         <div class="flex">
             <img src="Hess.png" width = 20% max-width =150px max-height="150px" >
             <h1>Simulasi Eksperimen Hukum Hess</h1>
+            <a href="login.html">
+              <button  type ="button" value="go to login" id="login" name="login">Login</button>
+          </a>
+
         </div>
     </header>
 
@@ -45,30 +53,11 @@
             <div class="resultHess" id="resultH"></div>
           </div>
     </section>
-    
-    <script>
-        function calculateHessLaw() {
-            try {
-              // Ambil nilai input dari pengguna
-              const deltaH1 = parseFloat(document.getElementById('deltaH1').value);
-              const deltaH2 = parseFloat(document.getElementById('deltaH2').value);
+    <script src="show_user.js">
       
-              // Cek apakah input valid (pastikan pengguna memasukkan angka)
-              if (isNaN(deltaH1) || isNaN(deltaH2)) {
-                document.getElementById('resultH').textContent = "Harap masukkan nilai ΔH yang valid!";
-                return;
-              }
-      
-              // Menghitung total perubahan entalpi berdasarkan hukum Hess
-              const deltaHTotal = deltaH1 + deltaH2;
-      
-              // Menampilkan hasil perhitungan di elemen dengan id "result"
-              document.getElementById('resultH').textContent = `ΔH Total = ${deltaHTotal} kJ/mol`;
-            } catch (error) {
-              console.error("Terjadi kesalahan saat menghitung Hukum Hess: ", error);
-              document.getElementById('resultH').textContent = "Terjadi kesalahan. Coba lagi!";
-            }
-          }
+  </script>
+    <script src = "calculateH.js">
+        
       </script>
 </body>
 </html>
